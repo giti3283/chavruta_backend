@@ -435,13 +435,13 @@ namespace Bl.Services
             }
         }
 
-        public async Task<bool> FixSchedule(int off)
+        public async Task<bool> FixSchedule(int schCode)
         {
             try
             {
-                BLSchedule schedule = await GetByCode(off);
+                BLSchedule schedule = await GetByCode(schCode);
                 schedule.Available = false;
-                await Update(schedule, off);
+                await Update(schedule, schCode);
                 return true;
             }
             catch (Exception ex)

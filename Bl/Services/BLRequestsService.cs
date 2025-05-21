@@ -414,8 +414,17 @@ namespace Bl.Services
         {
             try
             {
-                BLRequest blr = await GetByCode(reqCode);
-                blr.ChavrutaCode = chaCode;
+                try
+                {
+                    BLRequest blr = await GetByCode(reqCode);
+                    blr.ChavrutaCode = chaCode;
+                    await Update(blr, reqCode);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Failed to fix schedule: {ex.Message}", ex);
+                }
+                
 
                 BLOffer blo = await offers.GetByCode(chaCode);
                 schedule.FixSchedule(chaScheduleCode);
