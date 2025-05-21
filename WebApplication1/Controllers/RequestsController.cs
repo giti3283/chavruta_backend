@@ -196,19 +196,19 @@ namespace ServerUi.Controllers
             }
         }
 
-        /*[HttpGet("SelectChavruta")]
-        public async Task<IActionResult> SelectChavruta(string id, int reqCode, int chaCode, int reqScheduleCode, int chaScheduleCode)
+        [HttpGet("SelectChavruta/{requestCode}/{chavrutaCode}/{scheduleCode}")]
+        public async Task<IActionResult> SelectChavruta(int requestCode, int chavrutaCode, int scheduleCode)
         {
             try
             {
-                await bl.SelectChavruta(id, reqCode, chaCode, reqScheduleCode, chaScheduleCode);
+                await bl.SelectChavruta(requestCode, chavrutaCode, scheduleCode);
                 return Ok();
             }
             catch (System.Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
-        }*/
+        }
 
         // POST api/<RequestsController>
         [Route("Add")]
